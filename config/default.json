@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://erez:Rr123456@smartteacher-uyu4w.mongodb.net/smartteacher?retryWrites=true&w=majority",
+  "jwtSecret": "mysecrettoken"
+}
