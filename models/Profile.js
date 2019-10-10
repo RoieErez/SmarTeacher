@@ -40,8 +40,13 @@ const ProfileSchema = new mongoose.Schema({
         require: true
       },
       current: {
+        //active student or not
         type: Boolean,
         default: true
+      },
+      date: {
+        type: Date,
+        default: Date.now
       },
       description: {
         type: String

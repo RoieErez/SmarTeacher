@@ -119,4 +119,74 @@ router.get('/user/:user_id', async (req, res) => {
   }
 });
 
+// @route    DELETE api/profile
+// @desc     Delete profile, user & posts
+// @access   Private
+router.delete('/', auth, async (req, res) => {
+  try {
+    // Remove user posts
+    //await Post.deleteMany({ user: req.user.id });
+    // Remove profile
+    await Profile.findOneAndRemove({ user: req.user.id });
+    // Remove user
+    await User.findOneAndRemove({ _id: req.user.id });
+
+    res.json({ msg: 'User deleted' });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+// @route    PUT api/profile/students
+// @desc     Add profile students
+// @access   Private
+router.put(
+  '/students',
+  [
+    auth,
+    [
+      check('name', 'Studnt name is requierd')
+        .not()
+        .isEmpty(),
+      check('location', 'Studnt location is requierd')
+        .not()
+        .isEmpty(),
+      check('progress', 'Studnt progress is requierd')
+        .not()
+        .isEmpty(),
+      check('progress', 'Progress must be Numeric between 0-6')
+        .isNumeric()
+        .isIn([0, 1, 2, 3, 4, 5, 6])
+    ]
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    const { name, location, progress, current, description } = req.body;
+
+    const newStudent = {
+      name,
+      location,
+      progress,
+      current,
+      description
+    };
+
+    try {
+      const profile = await Profile.findOne({ user: req.user.id });
+
+      profile.students.unshift(newStudent);
+      await profile.save();
+
+      res.json(profile);
+    } catch (error) {
+      console.log(err.message);
+      res.status(500).send('Server Error');
+    }
+  }
+);
+
 module.exports = router;
