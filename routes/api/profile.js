@@ -1,4 +1,6 @@
 const express = require('express');
+const request = require('request');
+
 const router = express.Router();
 const auth = require('../../middleware/auth');
 const { check, validationResult } = require('express-validator');
@@ -182,11 +184,99 @@ router.put(
       await profile.save();
 
       res.json(profile);
-    } catch (error) {
+    } catch (err) {
       console.log(err.message);
       res.status(500).send('Server Error');
     }
   }
 );
+
+// @route    DELETE api/profile/students/:std_id
+// @desc     Remove students from profile
+// @access   Private
+
+router.delete('/students/:std_id', auth, async (req, res) => {
+  try {
+    const profile = await Profile.findOne({ user: req.user.id });
+    //Get remove index
+    const removeIndex = profile.students
+      .map(item => item.id)
+      .indexOf(req.params.std_id);
+    profile.students.splice(removeIndex, 1);
+
+    await profile.save();
+
+    res.json(profile);
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+// ------------------------------------------------------------------
+
+// @route    PUT api/profile/tasks
+// @desc     Add profile students
+// @access   Private
+router.put(
+  '/tasks',
+  [
+    auth,
+    [
+      check('studentName', 'Studnt name is requierd')
+        .not()
+        .isEmpty(),
+      check('info', 'Studnt info is requierd')
+        .not()
+        .isEmpty()
+    ]
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    const { studentName, info } = req.body;
+
+    const newTask = {
+      studentName,
+      info
+    };
+
+    try {
+      const profile = await Profile.findOne({ user: req.user.id });
+
+      profile.tasks.unshift(newTask);
+      await profile.save();
+
+      res.json(profile);
+    } catch (err) {
+      console.log(err.message);
+      res.status(500).send('Server Error');
+    }
+  }
+);
+
+// @route    DELETE api/profile/tasks/:task_id
+// @desc     Remove tasks from profile
+// @access   Private
+
+router.delete('/tasks/:task_id', auth, async (req, res) => {
+  try {
+    const profile = await Profile.findOne({ user: req.user.id });
+    //Get remove index
+    const removeIndex = profile.tasks
+      .map(item => item.id)
+      .indexOf(req.params.task_id);
+    profile.tasks.splice(removeIndex, 1);
+
+    await profile.save();
+
+    res.json(profile);
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send('Server Error');
+  }
+});
 
 module.exports = router;
