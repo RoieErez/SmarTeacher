@@ -1,6 +1,6 @@
 {
-  "mongoURI": "Put your mongo uri here",
+  "mongoURI": "mongodb+srv://erez:Rr123456@smartteacher-uyu4w.mongodb.net/smartteacher?retryWrites=true&w=majority",
   "jwtSecret": "mysecrettoken",
-  "paypalClientId": "",
-  "paypalSecret": ""
+  "paypalClientId": "AYg-TcQ9NVZaIqxSfYNpIzULiGvf2ylHxua5OvcLx3O6Fb_uI_Xjnka61d7U7Rk9_dOWmVxKIfESFIMr",
+  "paypalSecret": "ED7n0ieQFi1lTnGfP6_CDE9wRsjZFP6tla4Pq3DLEQsllnVoSnYHjC-5okKyDroVYV-BOJXLNUeABEkj"
 }

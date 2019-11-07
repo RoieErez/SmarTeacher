@@ -1,34 +1,32 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
+const Navbar = () => {
+  return (
+    <nav className='navbar bg-dark'>
+      <h4>
+        <Link to='/'>
+          <i class='fas fa-book-open'></i> SmarTeacher
+        </Link>
+      </h4>
+      <ul>
+        <li>
+          <Link to='/!#'>
+            <i class='fas fa-graduation-cap'></i> Teachers
+          </Link>
+        </li>
+        <li>
+          <Link to='/register'>
+            <i class='fas fa-pen-square'></i> Register
+          </Link>
+        </li>
+        <li>
+          <Link to='/login'>
+            <i class='fas fa-sign-in-alt'></i> Login
+          </Link>
+        </li>
+      </ul>
+    </nav>
+  );
+};
 
-export class AppNavbar extends Component {
-  render() {
-    return (
-      <nav className='navbar bg-dark'>
-        <h4>
-          <a href='index.html'>
-            <i className='fas fa-code'></i> SmarTeacher
-          </a>
-        </h4>
-        <ul>
-          <li>
-            <a href='profiles.html'>
-              <i class='fas fa-graduation-cap'></i> Teachers
-            </a>
-          </li>
-          <li>
-            <a href='register.html'>
-              <i class='fas fa-pen-square'></i> Register
-            </a>
-          </li>
-          <li>
-            <a href='login.html'>
-              <i class='fas fa-sign-in-alt'></i> Login
-            </a>
-          </li>
-        </ul>
-      </nav>
-    );
-  }
-}
-
-export default AppNavbar;
+export default Navbar;
