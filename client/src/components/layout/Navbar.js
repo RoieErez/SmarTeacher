@@ -1,26 +1,34 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const Navbar = () => {
-  return (
-    <nav className='navbar bg-dark'>
-      <h1>
-        <a href='index.html'>
-          <i className='fas fa-code'></i> DevConnector
-        </a>
-      </h1>
-      <ul>
-        <li>
-          <a href='profiles.html'>Developers</a>
-        </li>
-        <li>
-          <a href='register.html'>Register</a>
-        </li>
-        <li>
-          <a href='login.html'>Login</a>
-        </li>
-      </ul>
-    </nav>
-  );
-};
+export class AppNavbar extends Component {
+  render() {
+    return (
+      <nav className='navbar bg-dark'>
+        <h4>
+          <a href='index.html'>
+            <i className='fas fa-code'></i> SmarTeacher
+          </a>
+        </h4>
+        <ul>
+          <li>
+            <a href='profiles.html'>
+              <i class='fas fa-graduation-cap'></i> Teachers
+            </a>
+          </li>
+          <li>
+            <a href='register.html'>
+              <i class='fas fa-pen-square'></i> Register
+            </a>
+          </li>
+          <li>
+            <a href='login.html'>
+              <i class='fas fa-sign-in-alt'></i> Login
+            </a>
+          </li>
+        </ul>
+      </nav>
+    );
+  }
+}
 
-export default Navbar;
+export default AppNavbar;
