@@ -5,23 +5,23 @@ const Navbar = () => {
     <nav className='navbar bg-dark'>
       <h4>
         <Link to='/'>
-          <i class='fas fa-book-open'></i> SmarTeacher
+          <i className='fas fa-book-open'></i> SmarTeacher
         </Link>
       </h4>
       <ul>
         <li>
           <Link to='/!#'>
-            <i class='fas fa-graduation-cap'></i> Teachers
+            <i className='fas fa-graduation-cap'></i> Teachers
           </Link>
         </li>
         <li>
           <Link to='/register'>
-            <i class='fas fa-pen-square'></i> Register
+            <i className='fas fa-pen-square'></i> Register
           </Link>
         </li>
         <li>
           <Link to='/login'>
-            <i class='fas fa-sign-in-alt'></i> Login
+            <i className='fas fa-sign-in-alt'></i> Login
           </Link>
         </li>
       </ul>
