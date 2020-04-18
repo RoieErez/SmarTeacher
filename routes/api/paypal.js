@@ -1,10 +1,7 @@
 const express = require('express');
-const request = require('request');
 const config = require('config');
 const paypal = require('paypal-rest-sdk');
 const router = express.Router();
-
-const User = require('../../models/User');
 
 //set paypal to profile
 paypal.configure({

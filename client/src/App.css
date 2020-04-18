@@ -1,5 +1,6 @@
 /* Global Styles */
 :root {
+  --primary-color: #17a2b8;
   --dark-color: #343a40;
   --light-color: #f4f4f4;
   --danger-color: #dc3545;
@@ -16,7 +17,6 @@ body {
   font-family: 'Raleway', sans-serif;
   font-size: 1rem;
   line-height: 1.6;
-  overflow: hidden;
   background-color: #fff;
   color: #333;
 }
@@ -36,11 +36,11 @@ img {
 
 /* Utilities */
 .container {
-  max-width: 1100px;
+  max-width: 700px;
   margin: auto;
   overflow: hidden;
   padding: 0 2rem;
-  margin-top: 6rem;
+  margin-top: 3rem;
   margin-bottom: 3rem;
 }
 
@@ -226,7 +226,7 @@ img {
 
 /* Overlay */
 .dark-overlay {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.1);
   position: absolute;
   top: 0;
   left: 0;
@@ -236,7 +236,7 @@ img {
 
 /* Forms */
 .form .form-group {
-  margin: 1.2rem 0;
+  margin: 1rem 0px;
 }
 
 .form .form-text {
@@ -244,7 +244,7 @@ img {
   margin-top: 0.3rem;
   color: #888;
 }
-
+/*inputs Forms*/
 .form input[type='text'],
 .form input[type='email'],
 .form input[type='password'],
@@ -252,7 +252,7 @@ img {
 .form select,
 .form textarea {
   display: block;
-  width: 100%;
+  width: 75%;
   padding: 0.4rem;
   font-size: 1.2rem;
   border: 1px solid #ccc;
@@ -297,18 +297,22 @@ button {
 .table th {
   background: var(--light-color);
 }
-
+/*logo brand*/
+.logo-brand {
+  margin-left: 100px;
+  width: 230px;
+  height: auto;
+}
 /* Navbar */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.7rem 2rem;
+  padding: 0.3rem 3rem;
   position: fixed;
   z-index: 1;
   width: 100%;
   top: 0;
-  border-bottom: solid 1px var(--primary-color);
   opacity: 0.9;
 }
 
@@ -339,7 +343,7 @@ button {
 
 .landing-inner {
   color: #fff;
-  height: 55%;
+  height: 70%;
   width: 80%;
   margin: auto;
   display: flex;
@@ -452,6 +456,7 @@ button {
   flex: 3;
   flex-basis: 20%;
 }
+/*login and register*/
 
 /* Posts Page */
 .post-form .post-form-header {
@@ -520,7 +525,6 @@ button {
   .navbar ul {
     text-align: center;
     justify-content: center;
-    margin-left: 300px;
   }
 
   .navbar h1 {

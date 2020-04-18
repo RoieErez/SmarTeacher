@@ -81,4 +81,27 @@ router.post(
   }
 );
 
+exports.loadUsers = (req, res, next) => {
+  Account.findById(req.session.user._id)
+    .then(account => {
+      Account.find({
+        associate_id: req.session.user.associate_id,
+        account_type: { $ne: 'Customer' }
+      }).then(users_list => {
+        Department.find({ associate_id: req.session.user.associate_id })
+          .populate('positionId')
+          .then(department_list => {
+            res.render('users', {
+              uData: account,
+              users_list: users_list,
+              department_list: department_list
+            });
+          });
+      });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
 module.exports = router;
