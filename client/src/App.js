@@ -13,6 +13,8 @@ import EditProfile from './components/profile-form/EditProfile';
 import AddStudent from './components/profile-form/AddStudent';
 import AddTask from './components/profile-form/AddTask';
 import Profiles from './components/profiles/Profiles';
+import Posts from './components/posts/Posts';
+import Post from './components/post/Post';
 import Profile from './components/profile/Profile';
 
 import PrivateRoute from './components/routing/PrivateRoute';
@@ -62,6 +64,8 @@ const App = () => {
               />
               <PrivateRoute exact path='/add-student' component={AddStudent} />
               <PrivateRoute exact path='/add-task' component={AddTask} />
+              <PrivateRoute exact path='/posts' component={Posts} />
+              <PrivateRoute exact path='/posts/:id' component={Post} />
             </Switch>
           </section>
         </Fragment>
