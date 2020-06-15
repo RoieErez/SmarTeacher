@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Moment from 'react-moment';
 import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/styles';
+import { deleteStudent } from '../../actions/profile';
 
 import {
   CardActions,
@@ -21,7 +22,7 @@ import {
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 
-const Students = ({ student }) => {
+const Students = ({ student, deleteStudent }) => {
   const useStyles = makeStyles(() => ({
     root: {},
     content: {
@@ -53,7 +54,11 @@ const Students = ({ student }) => {
         <Moment format='DD/MM/YYYY'>{std.date}</Moment>
       </TableCell>
       <TableCell>
-        <Button variant='contained' color='secondary'>
+        <Button
+          onClick={() => deleteStudent(std._id)}
+          variant='contained'
+          color='secondary'
+        >
           Remove
         </Button>
       </TableCell>
@@ -99,6 +104,7 @@ const Students = ({ student }) => {
 
 Students.propTypes = {
   students: PropTypes.array.isRequired,
+  deleteStudent: PropTypes.func.isRequired,
 };
 
-export default Students;
+export default connect(null, { deleteStudent })(Students);

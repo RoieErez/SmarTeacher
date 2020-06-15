@@ -1,13 +1,16 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-
-const Task = ({ task }) => {
+import { deleteTask } from '../../actions/profile';
+import { connect } from 'react-redux';
+const Task = ({ task, deleteTask }) => {
   const tasks = task.map((tsk) => (
     <tr key={tsk._id}>
       <td>{tsk.studentName}</td>
       <td>{tsk.info}</td>
       <td>
-        <button className='btn btn-danger'>Remove</button>
+        <button onClick={() => deleteTask(tsk._id)} className='btn btn-danger'>
+          Remove
+        </button>
       </td>
     </tr>
   ));
@@ -30,6 +33,7 @@ const Task = ({ task }) => {
 
 Task.propTypes = {
   task: PropTypes.array.isRequired,
+  deleteTask: PropTypes.func.isRequired,
 };
 
-export default Task;
+export default connect(null, { deleteTask })(Task);
