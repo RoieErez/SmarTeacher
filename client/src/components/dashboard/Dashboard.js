@@ -8,10 +8,14 @@ import Students from './Students';
 import Task from './Task';
 import LatestSales from './LatestSales';
 import { getCurrentProfile } from '../../actions/profile';
-import { Grid, Container } from '@material-ui/core';
-import Sidebar from './Sidebar';
+import { Grid } from '@material-ui/core';
+
 import Budget from './Budget';
 import Outcome from './Outcome';
+import MediaCard from './MediaCard';
+//import UsersByDevice from './UsersByDevice';
+import Updates from './Updates';
+
 const Dashboard = ({
   getCurrentProfile,
   auth: { user },
@@ -20,39 +24,40 @@ const Dashboard = ({
   useEffect(() => {
     getCurrentProfile();
   }, []);
-  return profile === null || loading ? (
+
+  return profile === null && loading ? (
     <Spinner />
   ) : (
-    <Fragment>
-      <h1 className='large text-primary'>Dashboard</h1>
+    <div>
       <p className='lead'>
         <i className='fas fa-user'></i> Welcome {user && user.name}
         {/* the && sign is for 'if the user exist then put his name ' */}
       </p>
-
       {profile !== null ? (
-        <Fragment>
-          <Grid container spacing={4}>
-            <DashboardActions />
-
-            <Grid item lg={6} sm={6} xl={6} xs={12}>
-              <Budget />
-            </Grid>
-            <Grid item lg={6} sm={6} xl={6} xs={12}>
-              <Outcome />
-            </Grid>
-            <Grid item lg={12} md={12} xl={12} xs={12}>
-              <LatestSales />
-            </Grid>
-
-            <Grid item lg={8} md={12} xl={9} xs={12}>
-              <Students student={profile.students} />
-            </Grid>
-            <Grid item lg={8} md={12} xl={9} xs={12}>
-              <Task task={profile.tasks} />
-            </Grid>
+        <Grid container spacing={4}>
+          <DashboardActions />
+          <Grid item lg={6} sm={6} xl={6} xs={12}>
+            <Budget />
           </Grid>
-        </Fragment>
+          <Grid item lg={6} sm={6} xl={6} xs={12}>
+            <Outcome />
+          </Grid>
+          <Grid item lg={6} md={6} xl={6} xs={12}>
+            <LatestSales />
+          </Grid>
+          <Grid item lg={6} md={6} xl={6} xs={12}>
+            <Updates />
+          </Grid>
+          <Grid item lg={6} md={6} xl={3} xs={12}>
+            <MediaCard />
+          </Grid>
+          <Grid item lg={8} md={12} xl={9} xs={12}>
+            <Students student={profile.students} />
+          </Grid>
+          <Grid item lg={8} md={12} xl={9} xs={12}>
+            <Task task={profile.tasks} />
+          </Grid>
+        </Grid>
       ) : (
         <Fragment>
           <p>you have not yet setup profile, please add some info</p>
@@ -61,7 +66,7 @@ const Dashboard = ({
           </Link>
         </Fragment>
       )}
-    </Fragment>
+    </div>
   );
 };
 

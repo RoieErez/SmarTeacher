@@ -13,6 +13,7 @@ const Landing = ({ isAuthenticated }) => {
         <div className='landing-inner'>
           <h1 className='x-large'>SmarTeacher</h1>
           <p className='lead'>Connect , Share and poblish</p>
+
           <div className='buttons'>
             <Link to='/register' className='btn btn-primary'>
               Sign Up

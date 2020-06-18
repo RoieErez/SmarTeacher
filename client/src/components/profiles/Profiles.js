@@ -4,6 +4,7 @@ import Spinner from '../layout/Spinner';
 import ProfileItem from './ProfileItem';
 import { connect } from 'react-redux';
 import { getProfiles } from '../../actions/profile';
+import { Grid } from '@material-ui/core';
 
 const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
   useEffect(() => {
@@ -15,17 +16,20 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
         <Spinner />
       ) : (
         <Fragment>
-          <h1 className='large text-primary'>Teachers</h1>
-          <p className='lead'>Browese and connect</p>
-          <dev className='profiles'>
+          <p className='lead'>
+            <i class='fa fa-plug' aria-hidden='true'></i> Browese and connect
+          </p>
+          <Grid container spacing={4}>
             {profiles.length > 0 ? (
               profiles.map((profile) => (
-                <ProfileItem key={profile._id} profile={profile} />
+                <Grid item lg={4} sm={6} xl={4} xs={12}>
+                  <ProfileItem key={profile._id} profile={profile} />
+                </Grid>
               ))
             ) : (
               <Spinner />
             )}
-          </dev>
+          </Grid>
         </Fragment>
       )}
     </Fragment>

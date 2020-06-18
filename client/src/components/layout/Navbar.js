@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
+import Backdrop from './Backdrop';
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
@@ -14,7 +15,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       </li>
       <li>
         <Link to='/posts'>
-          <i className='fas fa-graduation-cap'></i> Posts
+          <i className='fas fa-users'></i> Community
         </Link>
       </li>
       <li>
@@ -58,6 +59,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
           <i className='fas fa-book-open'></i> SmarTeacher
         </Link>
       </h4>
+      <Backdrop />
       {!loading && (
         <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
       )}

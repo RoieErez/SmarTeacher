@@ -27,7 +27,11 @@ const Login = ({ login, isAuthenticated }) => {
 
   return (
     <Fragment>
-      <h1 className='large text-primary'>Sign In</h1>
+      <img
+        src='https://i.ibb.co/pfdkJPV/brand-logo.png'
+        className='logo-brand rounded'
+        alt=''
+      />
       <p className='lead'>
         <i className='fas fa-user' /> Sign Into Your Account
       </p>

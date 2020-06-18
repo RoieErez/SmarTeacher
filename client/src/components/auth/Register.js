@@ -40,7 +40,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
           className='logo-brand rounded'
           alt=''
         />
-        <h1 className='large text-primary'>Sign Up</h1>
+
         <p className='lead'>
           <i className='fas fa-user'></i> Create Your Account
         </p>
@@ -89,7 +89,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
               minLength='6'
             />
           </div>
-          <input type='submit' className='btn' value='Register' />
+          <input type='submit' className='btn btn-primary' value='Register' />
         </form>
         <p className='my-1'>
           Already have an account? <Link to='/login'>Sign In</Link>

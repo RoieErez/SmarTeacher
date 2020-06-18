@@ -11,7 +11,10 @@ const DashboardActions = () => {
         <i className='fas fa-graduation-cap text-primary'></i> Add Students
       </Link>
       <Link to='/add-task' className='btn btn-light'>
-        <i className='fas fa-graduation-cap text-primary'></i> Add Tasks
+        <i className='fas fa-tasks text-primary'></i> Add Tasks
+      </Link>
+      <Link to='/#' className='btn btn-light'>
+        <i className='fas fa-file-export text-primary'></i> Export Report
       </Link>
     </div>
   );

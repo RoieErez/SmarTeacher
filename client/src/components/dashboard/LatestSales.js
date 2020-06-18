@@ -40,7 +40,7 @@ const LatestSales = (props) => {
             Last 7 days <ArrowDropDownIcon />
           </Button>
         }
-        title='Latest Sales'
+        title='Latest Sales Jun 2020'
       />
       <Divider />
       <CardContent>

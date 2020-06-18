@@ -1,8 +1,14 @@
 import React, { Fragment, useState } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addStudent } from '../../actions/profile';
+import Typography from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
+import { Grid, Divider } from '@material-ui/core';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import Paper from '@material-ui/core/Paper';
 
 const AddStudent = ({ addStudent, history }) => {
   const [formData, setFormData] = useState({
@@ -30,101 +36,108 @@ const AddStudent = ({ addStudent, history }) => {
 
   return (
     <Fragment>
-      <h1 className='large text-primary'>Add A Student</h1>
-      <p className='lead'>
-        <i className='fas fa-code-branch'></i> Add Another student to your
-        students collection
-      </p>
-      <small>* = required field</small>
-      <form
-        className='form'
-        onSubmit={(e) => {
-          e.preventDefault();
-          addStudent(formData, history);
-        }}
-      >
-        <div className='form-group'>
-          <input
-            type='text'
-            placeholder='* Full Name'
-            name='name'
-            value={name}
-            onChange={(e) => onChange(e)}
-            required
-          />
-        </div>
-        <div className='form-group'>
-          <input
-            type='email'
-            placeholder='Email Address'
-            name='email'
-            value={email}
-            onChange={(e) => onChange(e)}
-            required
-          />
-        </div>
-        <div className='form-group'>
-          <input
-            type='text'
-            placeholder='Phone Number'
-            name='phone'
-            value={phone}
-            onChange={(e) => onChange(e)}
-            required
-          />
-        </div>
-        <div className='form-group'>
-          <input
-            type='text'
-            placeholder='Location'
-            name='location'
-            value={location}
-            onChange={(e) => onChange(e)}
-          />
-        </div>
-
-        <div classNameName='form-group'>
-          <select
-            name='progress'
-            value={progress}
-            onChange={(e) => onChange(e)}
+      <Paper elevation={3}>
+        <div className='container '>
+          <Typography variant='h6' gutterBottom>
+            <div className='text-center'>Add A Student</div>
+          </Typography>
+          <Divider />
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              addStudent(formData, history);
+            }}
           >
-            <option value='0'>* Select Professional Status</option>
-            <option value='1'>Just started</option>
-            <option value='2'>Rookie</option>
-            <option value='3'>Getting the handle of things</option>
-            <option value='4'>Well known</option>
-            <option value='5'>Professional</option>
-            <option value='6'>I have nothing to teach</option>
-          </select>
-          <small classNameName='form-text'>
-            Please mention the student progress within his schooling program
-          </small>
+            <Grid container spacing={3}>
+              <Grid item xs={6}>
+                <TextField
+                  type='text'
+                  placeholder='* Full Name'
+                  name='name'
+                  value={name}
+                  onChange={(e) => onChange(e)}
+                  required
+                  label='Full Name'
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  type='email'
+                  placeholder='Email Address'
+                  name='email'
+                  value={email}
+                  onChange={(e) => onChange(e)}
+                  required
+                />
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
+                  type='text'
+                  placeholder='Phone Number'
+                  name='phone'
+                  value={phone}
+                  onChange={(e) => onChange(e)}
+                  required
+                  fullWidth
+                />
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
+                  type='text'
+                  placeholder='Location'
+                  name='location'
+                  value={location}
+                  onChange={(e) => onChange(e)}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <Select
+                  name='progress'
+                  value={progress}
+                  onChange={(e) => onChange(e)}
+                >
+                  <MenuItem value='0'>* Select Professional Status</MenuItem>
+                  <MenuItem value='1'>Just started</MenuItem>
+                  <MenuItem value='2'>Rookie</MenuItem>
+                  <MenuItem value='3'>Getting the handle of things</MenuItem>
+                  <MenuItem value='4'>Well known</MenuItem>
+                  <MenuItem value='5'>Professional</MenuItem>
+                  <MenuItem value='6'>I have nothing to teach</MenuItem>
+                </Select>
+                <p classNameName='form-text'>
+                  Please mention the student progress within his schooling
+                  program
+                </p>
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
+                  type='text'
+                  placeholder='Amount of payment'
+                  name='paymentAmount'
+                  value={paymentAmount}
+                  onChange={(e) => onChange(e)}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <div className='form-group'>
+                  <textarea
+                    name='description'
+                    cols='30'
+                    rows='5'
+                    placeholder='Student Description'
+                    value={description}
+                    onChange={(e) => onChange(e)}
+                  ></textarea>
+                </div>
+                <input type='submit' className='btn btn-primary my-1' />
+                <Link className='btn btn-light my-1' to='/dashboard'>
+                  Go Back
+                </Link>
+              </Grid>
+            </Grid>
+          </form>
         </div>
-        <div className='form-group'>
-          <input
-            type='text'
-            placeholder='Amount of payment'
-            name='paymentAmount'
-            value={paymentAmount}
-            onChange={(e) => onChange(e)}
-          />
-        </div>
-        <div className='form-group'>
-          <textarea
-            name='description'
-            cols='30'
-            rows='5'
-            placeholder='Student Description'
-            value={description}
-            onChange={(e) => onChange(e)}
-          ></textarea>
-        </div>
-        <input type='submit' className='btn btn-primary my-1' />
-        <Link className='btn btn-light my-1' to='/dashboard'>
-          Go Back
-        </Link>
-      </form>
+      </Paper>
     </Fragment>
   );
 };

@@ -8,6 +8,7 @@ import ProfileAbout from './ProfileAbout';
 import ProfileStudents from './ProfileStudents';
 
 import { getProfileById } from '../../actions/profile';
+import { Divider } from '@material-ui/core';
 
 const Profile = ({
   getProfileById,
@@ -25,8 +26,8 @@ const Profile = ({
         <Spinner />
       ) : (
         <Fragment>
-          <Link to='/profiles' className='btn btn-light'>
-            Back To Profiles
+          <Link to='/profiles' className='btn btn-primary'>
+            <i class='fa fa-arrow-left' aria-hidden='true'></i> Back To Profiles
           </Link>
           {auth.isAuthenticated &&
             auth.loading === false &&
@@ -35,15 +36,20 @@ const Profile = ({
                 Edit Profile
               </Link>
             )}
-          <div className='profile-grid my-1'>
+          <div className=''>
             <ProfileTop profile={profile} />
             <ProfileAbout profile={profile} />
             <div className='profile-exp bg-white p-2'>
-              <h2 className='text-primary'>Students</h2>
+              <h2 className=' text-center'>Students</h2>
+              <Divider />
               {profile.students.length > 0 ? (
                 <Fragment>
                   {profile.students.map((student) => (
-                    <ProfileStudents key={student._id} student={student} />
+                    <ProfileStudents
+                      key={student._id}
+                      student={student}
+                      className='sutendsList'
+                    />
                   ))}
                 </Fragment>
               ) : (

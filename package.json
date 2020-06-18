@@ -12,6 +12,7 @@
   "author": "Roie Erez",
   "license": "MIT",
   "dependencies": {
+    "@material-ui/core": "^4.0.0",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^4.3.1",
     "config": "^3.2.3",
@@ -22,6 +23,7 @@
     "mongoose": "^5.7.3",
     "normalize-url": "^5.0.0",
     "paypal-rest-sdk": "^1.8.1",
+    "react-chartjs-2": "^2.9.0",
     "reactstrap": "^8.1.1",
     "request": "^2.88.0"
   },

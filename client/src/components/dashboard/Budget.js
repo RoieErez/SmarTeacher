@@ -45,7 +45,7 @@ const Budget = () => {
               >
                 BUDGET
               </Typography>
-              <Typography variant='h3'>$24,000</Typography>
+              <Typography variant='h3'>$14,000</Typography>
             </Grid>
             <Grid item>
               <Avatar className={classes.avatar}>

@@ -84,7 +84,7 @@ const Students = ({ student, deleteStudent }) => {
                       </TableSortLabel>
                     </Tooltip>
                   </TableCell>
-                  <TableCell></TableCell>
+                  <TableCell>Action</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>{students}</TableBody>
